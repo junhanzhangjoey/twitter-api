@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>Mastodon API Web UI</header>
+    <h1>status id: {{id}}</h1></br>
+    <h2>status content: {{content}}</h2></br>
+    <h3>{{message}}</h3></br>
+
+    <form method="POST" action="/post">
+        <textarea name="content" placeholder="Enter your post"></textarea>
+        <button type="submit">Submit</button>
+    </form></br>
+
+    <form method="POST" action="/retrieve">
+        <input name="id" placeholder="Enter the status id you want to read"></input>
+        <button type="submit">Get Status</button>
+    </form></br>
+
+    <form method="POST" action="/delete">
+        <input name="id" placeholder="Enter the status id you want to delete"></input>
+        <button type="submit">Delete</button>
+    </form></br>
+
+</body>
+</html>

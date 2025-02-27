@@ -12,7 +12,7 @@ def main():
 def post_status():
     content=request.form.get('content')#get the frontend's form's input content
     id=post(content)
-    return render_template('app.html',id=id,content=content,message="Post Done!")#go to the new route and show user "Post Done!"
+    return render_template('app.html',id=id,content=content,message="Post Done!")#render the page and show user "Post Done!"
 
 
 @app.route("/retrieve",methods=['GET','POST'])

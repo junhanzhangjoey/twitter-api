@@ -1,5 +1,5 @@
 from flask import Flask,request,render_template
-from instance import post, retrieve, delete
+from instance import mastodon, post, retrieve, delete
 from bs4 import BeautifulSoup
 
 app=Flask(__name__)
@@ -11,7 +11,7 @@ def main():
 @app.route("/post",methods=['GET','POST'])#route() only respond to GET method in default, this make rout() respond to POST method as well
 def post_status():
     content=request.form.get('content')#get the frontend's form's input content
-    id=post(content)
+    id=post(content,mastodon)
     return render_template('app.html',id=id,content=content,message="Post Done!")#render the page and show user "Post Done!"
 
 
@@ -19,7 +19,7 @@ def post_status():
 def retrieve_status():
     id=request.form.get('id')
 
-    soup = BeautifulSoup(retrieve(id), "html.parser")
+    soup = BeautifulSoup(retrieve(id,mastodon), "html.parser")
     content=soup.get_text()
     
     return render_template('app.html',id=id,content=content,message="retrieve succeed")
@@ -27,8 +27,8 @@ def retrieve_status():
 @app.route("/delete",methods=['GET','POST'])
 def delete_status():
     id=request.form.get('id')
-    content=delete(id)
+    content=delete(id,mastodon)
     return render_template('app.html',id=id,content=content,message=f"status id: {id} delete success")
 
-if __name__=="__main__":#
+if __name__=="__main__":
     app.run(debug=True)

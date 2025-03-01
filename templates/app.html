@@ -26,5 +26,14 @@
         <button type="submit">Delete</button>
     </form></br>
 
+    <h2>
+        <ul>
+            {%for id in list%}
+                <li>{{id}}</li>
+                
+            {% endfor %}
+        </ul>
+    </h2>
+
 </body>
 </html>
